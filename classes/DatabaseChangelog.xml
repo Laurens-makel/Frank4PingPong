@@ -1,0 +1,56 @@
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+<!-- When using one of the following commands, a rollback script is not required
+AddColumn
+AddDefaultValue
+AddForeignKeyConstraint
+AddLookupTable
+AddNotNullConstraint
+AddPrimaryKey
+AddUniqueConstraint
+CreateIndex
+CreateSequence
+CreateTable
+CreateView
+DropNotNullConstraint
+RenameColumn
+RenameTable
+RenameView
+TagDatabase
+ -->
+
+    <changeSet id="CREATE_USERS_TABLE" author="Laurens Mäkel">
+        <createTable tableName="USERS">
+            <column name="UID" type="int" autoIncrement="true">
+                <constraints primaryKey="true" unique="true" nullable="false" ></constraints>
+            </column>
+            <column name="USERNAME"     type="varchar(255)"></column>
+            <column name="PASSWORD"     type="varchar(255)"></column>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="CREATE_MATCHES_TABLE" author="Laurens Mäkel">
+        <createTable tableName="MATCHES">
+            <column name="MATCH_ID" type="int" autoIncrement="true">
+                <constraints primaryKey="true" unique="true" nullable="false" ></constraints>
+            </column>
+            <column name="PLAYER_A_ID"  type="int" >
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="PLAYER_B_ID"  type="int">
+                <constraints nullable="false"></constraints>
+            </column>
+            <column name="PLAYER_A_SCORE"  type="int" ></column>
+            <column name="PLAYER_B_SCORE"  type="int" ></column>
+            <column name="PLAYER_A_CONFIRMED"  type="boolean" ></column>
+            <column name="PLAYER_B_CONFIRMED"  type="boolean" ></column>
+            <column name="UPDATED_AT"   type="date"></column>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>
